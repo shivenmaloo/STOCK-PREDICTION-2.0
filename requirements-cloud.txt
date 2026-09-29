@@ -1,0 +1,33 @@
+# ============================================================
+# Cloud deployment dependencies — a lighter version of
+# requirements.txt specifically for free-tier hosts (Render,
+# Railway, etc.), where build memory/disk/time are constrained.
+#
+# Deliberately excludes torch: it's a large package (500MB-2GB)
+# that risks failing the build on a free tier's limited resources,
+# and the app is already explicitly designed to handle its absence
+# gracefully — the LSTM model just reports itself "unavailable"
+# rather than breaking anything else. Your local setup (using the
+# original requirements.txt) is unaffected by this file entirely.
+#
+# If you deploy somewhere with more build headroom later and want
+# the LSTM model available there too, just use requirements.txt
+# instead of this file.
+# ============================================================
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-dotenv==1.0.1
+yfinance==0.2.44
+pandas==2.2.3
+numpy==1.26.4
+httpx==0.27.2
+requests==2.32.3
+feedparser==6.0.11
+beautifulsoup4==4.12.3
+scikit-learn==1.5.2
+xgboost==2.1.1
+apscheduler==3.10.4
+scipy==1.14.1
